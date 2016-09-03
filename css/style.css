@@ -1,0 +1,20 @@
+  body, html {
+      font-family: sans-serif;
+  }
+ 
+  #map {
+    width: 70%;
+    height: 700px;
+  }
+
+  #infoWindow {
+    background: #FFFFFF;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 30px;
+    position: relative;
+    top: -78px;
+    width: auto;
+    display: inline;
+    margin-left: 20px;
+  }
