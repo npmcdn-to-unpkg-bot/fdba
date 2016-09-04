@@ -57,6 +57,9 @@ function resetHighlight(e) {
 
 
 function onEachFeature(feature, layer) {
+    var popup = "Test111" + feature.geometry.type + ", test again";
+    layer.bindPopup(popup);
+
     layer.on({
         mouseover: mouseoverFunction,
         mouseout: resetHighlight
@@ -72,8 +75,8 @@ var bizmarker = {
   fillOpacity: 0.8
 };
 
-  $.getJSON('data/data.geojson', function(Bizdata) {
-    geojson = L.geoJson(Bizdata, {
+  $.getJSON('data/data.geojson', function(Biz) {
+    geojson = L.geoJson(Biz, {
       style: style,
       onEachFeature: onEachFeature,
       pointTolayer: function (feature, latlng) {
@@ -83,7 +86,20 @@ var bizmarker = {
   });
 
 
-
+// L.geoJson([biz], {
+//   style: style,
+//   onEachFeature: onEachFeature,
+//   pointToLayer: function (feature, latlng) {
+//     return L.circleMarker(latlng, {
+//       radius: 8,
+//       fillColor: "#000",
+//       color: "#000",
+//       weight: 1,
+//       opacity: 1,
+//       fillOpacity: 0.8
+//     });
+//   }
+// }).addTo(map);
   
 
   // var bizlayer = L.geoJson().addTo(map);
