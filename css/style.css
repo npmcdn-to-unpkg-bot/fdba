@@ -3,17 +3,20 @@
   }
  
   #map {
-    width: 70%;
-    height: 700px;
+    margin-top: 5px;
+    width: 60%;
+    height: 600px;
+    border: solid 1px #ccc;
   }
 
   #infoWindow {
     background: #FFFFFF;
+    color: #000;
     padding: 15px;
     border-radius: 10px;
     font-size: 30px;
     position: relative;
-    top: -78px;
+    top: 120px;
     width: auto;
     display: inline;
     margin-left: 20px;

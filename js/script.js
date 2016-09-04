@@ -10,21 +10,22 @@ var map = L.map('map', {
 
 var geojson;
 
+
 function getColor(d) {
-    return d > 0   ? '#0000cc' :
-           d > 10  ? '#BD0026' :
-           d > 20  ? '#E31A1C' :
-           d > 30  ? '#FC4E2A' :
-           d > 40  ? '#FD8D3C' :
-           d > 70  ? '#FEB24C' :
-           d > 90  ? '#FED976' :
+    return d > 100   ? '#0000cc' :
+           d > 90  ? '#BD0026' :
+           d > 80  ? '#E31A1C' :
+           d > 70  ? '#FC4E2A' :
+           d > 60  ? '#FD8D3C' :
+           d > 50  ? '#FEB24C' :
+           d > 40  ? '#FED976' :
                      '#FFEDA0';
   }
 
 function style(feature) {
     return {
         fillColor: getColor(feature.properties.OBJECTID),
-        weight: 2,
+        weight: 1,
         opacity: 1,
         color: 'white',
         dashArray: '0',
@@ -36,10 +37,10 @@ function mouseoverFunction(e) {
     var layer = e.target;
 
     layer.setStyle({
-        weight: 5,
-        color: '#666',
+        weight: 2,
+        color: '#777',
         dashArray: '',
-        fillOpacity: 0.8
+        fillOpacity: 0.6
     });
 
     if (!L.Browser.ie && !L.Browser.opera) {
@@ -62,9 +63,35 @@ function onEachFeature(feature, layer) {
     });
 }
 
-  $.getJSON('data/data.geojson', function(data) {
-    geojson = L.geoJson(data, {
+var bizmarker = {
+  radius: 8,
+  fillColor: "#bbb",
+  color: "#000",
+  weight: 1,
+  opacity: 1,
+  fillOpacity: 0.8
+};
+
+  $.getJSON('data/data.geojson', function(Bizdata) {
+    geojson = L.geoJson(Bizdata, {
       style: style,
-      onEachFeature: onEachFeature
+      onEachFeature: onEachFeature,
+      pointTolayer: function (feature, latlng) {
+        return L.circleMarker(latlng, bizmarker);
+      }
     }).addTo(map);
   });
+
+
+
+  
+
+  // var bizlayer = L.geoJson().addTo(map);
+  // bizlayer.addData(Bizdata);
+
+  // Bizdata.forEach(function(element) {
+  //   var marker = L.marker(layer.feature.properties.coordinates).addTo(map);
+  //   marker.bindPopup(layer.feature.properties.aCateg)
+
+  // });
+
