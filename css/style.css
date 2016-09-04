@@ -4,7 +4,7 @@
  
   #map {
     margin-top: 5px;
-    width: 70%;
+    width: 500px;
     height: 600px;
     border: solid 1px #ccc;
   }
@@ -52,7 +52,7 @@
     border: solid 1px #E4E4E4;
     border-radius: 2px;
     background-color: #fff;
-    width: 300px;
+    width: 260px;
     float: left;
 }
 
