@@ -10,14 +10,20 @@
   }
 
   #infoWindow {
-    background: #FFFFFF;
-    color: #000;
+    background: #000;
+    color: #fff;
     padding: 15px;
     border-radius: 10px;
     font-size: 30px;
     position: relative;
-    top: 120px;
+/*    top: 120px;*/
     width: auto;
     display: inline;
     margin-left: 20px;
   }
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background: #636363;
+    color: #ffffff;
+}
