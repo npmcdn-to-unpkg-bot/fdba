@@ -2,11 +2,29 @@
     font-family: Raleway;
   }
  
+  #bootstrap-overrides h2 {
+    font-size: 28px;
+    font-family: Lato;
+  }
+
+  #bootstrap-overrides h3 {
+    font-size: 20px;
+    font-family: Abel;
+  }
+
   #map {
     margin-top: 5px;
     width: 500px;
     height: 600px;
     border: solid 1px #ccc;
+  }
+
+  #bootstrap-overrides .btn-group .open .dropdown-menu {
+    z-index: 100;
+  }
+
+  #bootstrap-overrides .leaflet-control-zoom {
+    z-index: 200;
   }
 
 
@@ -18,26 +36,26 @@
     font-size: 13px;
     top:30px;
     position: relative;
-    font-family: Raleway;
+    font-family: Lato;
     width: auto;
     display: inline;
     margin-left: -280px;
     font-weight: 500;
-    z-index: 5000;
+    z-index: 300;
   }
 
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
     background: #000;
-    font-family: Raleway;
+    font-family: Lato;
     font-weight: 500;
     font-size: 15px;
     color: #ffffff;
 }
 
 .btn-group>.btn:first-child {
-    font-family: Raleway;
-    font-weight: 500;
+    font-family: Abel;
+    font-weight: 600;
 }
 
 #custom-search-input .glyphicon-search {
@@ -70,7 +88,7 @@
     box-shadow: none;
     border: 0;
     color: #666666;
-    padding: 0 8px 0 10px;
+    padding: 0 5px 0 10px;
     border-left: solid 1px #ccc;
 }
 
