@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500" rel="stylesheet">
 
 </head>
 
@@ -23,10 +23,11 @@
   <center>
   	<div class="btn-group">
 	  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Action <span class="caret"></span>
+	    Restaurants/Bars 
+	    <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-	    <li><a href="#">Action</a></li>
+	    <li><a href="#">Restaurants/Bars</a></li>
 	    <li><a href="#">Another action</a></li>
 	    <li><a href="#">Something else here</a></li>
 	    <li role="separator" class="divider"></li>
@@ -36,10 +37,10 @@
 
 	 <div class="btn-group">
 	  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Action <span class="caret"></span>
+	    Other Food <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-	    <li><a href="#">Action</a></li>
+	    <li><a href="#">Other Food</a></li>
 	    <li><a href="#">Another action</a></li>
 	    <li><a href="#">Something else here</a></li>
 	    <li role="separator" class="divider"></li>
@@ -49,10 +50,10 @@
 
 	 <div class="btn-group">
 	  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Action <span class="caret"></span>
+	    Services <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-	    <li><a href="#">Action</a></li>
+	    <li><a href="#">Services</a></li>
 	    <li><a href="#">Another action</a></li>
 	    <li><a href="#">Something else here</a></li>
 	    <li role="separator" class="divider"></li>
@@ -62,10 +63,10 @@
 
 	 <div class="btn-group">
 	  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Action <span class="caret"></span>
+	    Retail <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-	    <li><a href="#">Action</a></li>
+	    <li><a href="#">Retail</a></li>
 	    <li><a href="#">Another action</a></li>
 	    <li><a href="#">Something else here</a></li>
 	    <li role="separator" class="divider"></li>
@@ -75,10 +76,10 @@
 
 	 <div class="btn-group">
 	  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Action <span class="caret"></span>
+	    Mixed <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-	    <li><a href="#">Action</a></li>
+	    <li><a href="#">Mixed</a></li>
 	    <li><a href="#">Another action</a></li>
 	    <li><a href="#">Something else here</a></li>
 	    <li role="separator" class="divider"></li>
@@ -89,13 +90,27 @@
 
 
   	<div class="row">
-  		<div class="col-md-8">
+  		<div class="col-md-7" style="padding-right: 0px;">
   			<div id="map" style="float:right">
+  				<div id="infoWindow">Restaurant</div>
   			</div>
+
   		</div>
 		
-		<div class="col-md-4">
-			<div id="infoWindow"></div>
+		<div class="col-md-5" style="padding-left: 2px;">
+<div id="custom-search-input">
+                <div class="input-group">
+                    <input type="text" class="form-control input-lg" placeholder="Search" />
+                    <span class="input-group-btn">
+                        <button class="btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+
+
 		</div>
 	</div>
   </center>
@@ -104,7 +119,6 @@
  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
  <script src="js/script.js"></script>
  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
- 
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

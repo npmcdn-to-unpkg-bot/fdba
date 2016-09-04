@@ -29,7 +29,7 @@ function style(feature) {
         opacity: 1,
         color: 'white',
         dashArray: '0',
-        fillOpacity: 0.8
+        fillOpacity: 0.9
     };
   }
 
@@ -37,8 +37,8 @@ function mouseoverFunction(e) {
     var layer = e.target;
 
     layer.setStyle({
-        weight: 2,
-        color: '#777',
+        weight: 1,
+        color: '#fff',
         dashArray: '',
         fillOpacity: 0.6
     });
@@ -57,7 +57,7 @@ function resetHighlight(e) {
 
 
 function onEachFeature(feature, layer) {
-    var popup = "Test111" + feature.geometry.type + ", test again";
+    var popup = "Test111" + feature.geometry.type + "<br>" + ", test again";
     layer.bindPopup(popup);
 
     layer.on({
