@@ -1,10 +1,31 @@
   body, html {
     font-family: Raleway;
   }
+
+  #bootstrap-overrides .row {
+    margin: 0px;
+  }
  
   #bootstrap-overrides h2 {
     font-size: 28px;
     font-family: Lato;
+  }
+
+  #bootstrap-overrides .jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+  }
+
+  #bootstrap-overrides .list-group-item:first-child{
+    border-top-right-radius:0px;
+    border-top-left-radius:0px;
+  }
+
+
+  #bootstrap-overrides .list-group-item {
+    width:280px;
+    float:left;
   }
 
   #bootstrap-overrides h3 {
@@ -54,7 +75,7 @@
 }
 
 .btn-group>.btn:first-child {
-    font-family: Abel;
+    font-family: Lato;
     font-weight: 600;
 }
 
