@@ -75,12 +75,26 @@ var tipm = {
   fillOpacity: 0.8
 };
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/gh-pages
   var panOptions = {
     animate: true,
     duration: 2
   }
 
+<<<<<<< HEAD
+  var pan1 = [40.807540,-73.953073];
+  var pan2 = [40.805461,-73.954661];
+  var pan3 = [40.802895,-73.956206];
+  var pan4 = [40.800913,-73.957794];
+
+    $(".myButton").click(function() {
+      if($(this).attr('id') == 'one' ) {
+       
+        map.panTo(pan1, panOptions);
+=======
   var downtown = [40.706913,-73.987513];
   var midtown = [40.756880,-73.982899];
   var uptown = [40.793441, -73.954618];
@@ -90,36 +104,53 @@ var tipm = {
       if($(this).attr('id') == 'one' ) {
         $(this).css('background-color','#453056');
         map.panTo('downtown', panOptions);
+>>>>>>> origin/gh-pages
       } 
       
       else 
         if 
 
       ($(this).attr('id') == 'three' ) {
+<<<<<<< HEAD
+        map.panTo(pan2, panOptions);
+=======
         map.panTo(uptown, panOptions);
+>>>>>>> origin/gh-pages
       } 
 
       else 
         if 
 
       ($(this).attr('id') == 'two' ) {
+<<<<<<< HEAD
+        map.panTo(pan3, panOptions);
+=======
         map.panTo(midtown, panOptions);
+>>>>>>> origin/gh-pages
       } 
 
 
       else {
 
    
+<<<<<<< HEAD
+        map.panTo(pan4, panOptions);
+=======
         map.panTo(queens, panOptions);
+>>>>>>> origin/gh-pages
       }
     });
 
 
+<<<<<<< HEAD
+  $.getJSON('data/data.geojson', function(Biz) {
+=======
 
 
 
 
   $.getJSON('data/biz.geojson', function(Biz) {
+>>>>>>> origin/gh-pages
     geojson = L.geoJson(Biz, {
       style: style,
       onEachFeature: onEachFeature,
