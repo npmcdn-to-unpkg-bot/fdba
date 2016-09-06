@@ -15,11 +15,7 @@
     outline:0px !important;
     -webkit-appearance:none;
   }
-<<<<<<< HEAD
   
-=======
-
->>>>>>> origin/gh-pages
   #bootstrap-overrides .row {
     margin: 0px;
   }
@@ -38,7 +34,6 @@
   #bootstrap-overrides .list-group-item:first-child{
     border-top-right-radius:0px;
     border-top-left-radius:0px;
-
   }
 
 
@@ -110,7 +105,7 @@
     border: solid 1px #E4E4E4;
     border-radius: 2px;
     background-color: #fff;
-    width: 280px;
+    width: 260px;
     float: left;
 }
 
