@@ -66,7 +66,7 @@ function onEachFeature(feature, layer) {
     });
 }
 
-var bizmarker = {
+var tipm = {
   radius: 8,
   fillColor: "#bbb",
   color: "#000",
@@ -75,12 +75,56 @@ var bizmarker = {
   fillOpacity: 0.8
 };
 
-  $.getJSON('data/data.geojson', function(Biz) {
+
+  var panOptions = {
+    animate: true,
+    duration: 2
+  }
+
+  var downtown = [40.706913,-73.987513];
+  var midtown = [40.756880,-73.982899];
+  var uptown = [40.793441, -73.954618];
+  var queens = [40.756360, -73.907862];
+
+    $(".myButton").click(function() {
+      if($(this).attr('id') == 'one' ) {
+        $(this).css('background-color','#453056');
+        map.panTo('downtown', panOptions);
+      } 
+      
+      else 
+        if 
+
+      ($(this).attr('id') == 'three' ) {
+        map.panTo(uptown, panOptions);
+      } 
+
+      else 
+        if 
+
+      ($(this).attr('id') == 'two' ) {
+        map.panTo(midtown, panOptions);
+      } 
+
+
+      else {
+
+   
+        map.panTo(queens, panOptions);
+      }
+    });
+
+
+
+
+
+
+  $.getJSON('data/biz.geojson', function(Biz) {
     geojson = L.geoJson(Biz, {
       style: style,
       onEachFeature: onEachFeature,
       pointTolayer: function (feature, latlng) {
-        return L.circleMarker(latlng, bizmarker);
+        return L.circleMarker(latlng, tipm);
       }
     }).addTo(map);
   });
