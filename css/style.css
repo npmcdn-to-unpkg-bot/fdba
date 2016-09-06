@@ -2,6 +2,20 @@
     font-family: Raleway;
   }
 
+  textarea:hover, 
+  input:hover, 
+  textarea:active, 
+  input:active, 
+  textarea:focus, 
+  input:focus,
+  button:focus,
+  button:active,
+  button:hover
+  {
+    outline:0px !important;
+    -webkit-appearance:none;
+  }
+  
   #bootstrap-overrides .row {
     margin: 0px;
   }
@@ -20,6 +34,7 @@
   #bootstrap-overrides .list-group-item:first-child{
     border-top-right-radius:0px;
     border-top-left-radius:0px;
+
   }
 
 
@@ -91,7 +106,7 @@
     border: solid 1px #E4E4E4;
     border-radius: 2px;
     background-color: #fff;
-    width: 260px;
+    width: 280px;
     float: left;
 }
 

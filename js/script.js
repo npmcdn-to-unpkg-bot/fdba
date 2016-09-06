@@ -75,6 +75,45 @@ var bizmarker = {
   fillOpacity: 0.8
 };
 
+  var panOptions = {
+    animate: true,
+    duration: 2
+  }
+
+  var pan1 = [40.807540,-73.953073];
+  var pan2 = [40.805461,-73.954661];
+  var pan3 = [40.802895,-73.956206];
+  var pan4 = [40.800913,-73.957794];
+
+    $(".myButton").click(function() {
+      if($(this).attr('id') == 'one' ) {
+       
+        map.panTo(pan1, panOptions);
+      } 
+      
+      else 
+        if 
+
+      ($(this).attr('id') == 'three' ) {
+        map.panTo(pan2, panOptions);
+      } 
+
+      else 
+        if 
+
+      ($(this).attr('id') == 'two' ) {
+        map.panTo(pan3, panOptions);
+      } 
+
+
+      else {
+
+   
+        map.panTo(pan4, panOptions);
+      }
+    });
+
+
   $.getJSON('data/data.geojson', function(Biz) {
     geojson = L.geoJson(Biz, {
       style: style,
