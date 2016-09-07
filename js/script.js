@@ -8,23 +8,46 @@ var map = L.map('map', {
   }).setView([40.804406,-73.955380], 17);
   map.addLayer(layer);
 
+
+
+
+  ////////////populate map with markers from sample data
+  // for(i in data) {
+  //   var title = data[i].title,  //value searched
+  //     loc = data[i].loc,    //position found
+  //     marker = new L.Marker(new L.latLng(loc), {title: title} );//se property searched
+  //   marker.bindPopup('title: '+ title );
+  //   markersLayer.addLayer(marker);
+  // }
+
+  // L.control.search({
+  //   layer: poiLayers,
+  //   initial: false,
+  //   propertyName: 'name',
+  //   buildTip: function(text, val) {
+  //     var type = val.layer.feature.properties.amenity;
+  //     return '<a href="#" class="'+type+'">'+text+'<b>'+type+'</b></a>';
+  //   }
+  // })
+  // .addTo(map);
+
 var geojson;
 
 
 function getColor(d) {
-    return d > 100   ? '#0000cc' :
-           d > 90  ? '#BD0026' :
-           d > 80  ? '#E31A1C' :
-           d > 70  ? '#FC4E2A' :
-           d > 60  ? '#FD8D3C' :
-           d > 50  ? '#FEB24C' :
-           d > 40  ? '#FED976' :
+    return d > 6  ? 'green' :
+           d > 5  ? '#BD0026' :
+           d > 4  ? '#E31A1C' :
+           d > 3  ? '#FC4E2A' :
+           d > 2  ? '#FD8D3C' :
+           d > 1  ? '#FEB24C' :
+           d > 0  ? '#FED976' :
                      '#FFEDA0';
   }
 
 function style(feature) {
     return {
-        fillColor: getColor(feature.properties.OBJECTID),
+        fillColor: getColor(feature.properties.Value),
         weight: 1,
         opacity: 1,
         color: 'white',
@@ -48,7 +71,7 @@ function mouseoverFunction(e) {
     }
 
     console.log(layer.feature.properties.OBJECTID);
-    $('#infoWindow').html(layer.feature.properties.aCateg);
+    $('#infoWindow').html(layer.feature.properties.Organization);
   }
 
 function resetHighlight(e) {
@@ -57,7 +80,7 @@ function resetHighlight(e) {
 
 
 function onEachFeature(feature, layer) {
-    var popup = "Test111" + feature.geometry.type + "<br>" + ", test again";
+    var popup = "<h5>" + feature.properties.Organization + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br>" + feature.properties.Web;
     layer.bindPopup(popup);
 
     layer.on({
@@ -65,6 +88,17 @@ function onEachFeature(feature, layer) {
         mouseout: resetHighlight
     });
 }
+
+// $('#myDropdown1').on('hide.bs.dropdown', function () {
+//     return false;
+// });
+
+$('.dropdown.keep-open').on({
+    "shown.bs.dropdown": function() { this.closable = true; },
+    "click":             function() { this.closable = true; },
+    "hide.bs.dropdown":  function() { return this.closable; }
+});
+
 
 var bizmarker = {
   radius: 8,
@@ -114,7 +148,7 @@ var bizmarker = {
     });
 
 
-  $.getJSON('data/data.geojson', function(Biz) {
+  $.getJSON('data/biz.geojson', function(Biz) {
     geojson = L.geoJson(Biz, {
       style: style,
       onEachFeature: onEachFeature,
@@ -125,20 +159,7 @@ var bizmarker = {
   });
 
 
-// L.geoJson([biz], {
-//   style: style,
-//   onEachFeature: onEachFeature,
-//   pointToLayer: function (feature, latlng) {
-//     return L.circleMarker(latlng, {
-//       radius: 8,
-//       fillColor: "#000",
-//       color: "#000",
-//       weight: 1,
-//       opacity: 1,
-//       fillOpacity: 0.8
-//     });
-//   }
-// }).addTo(map);
+
   
 
   // var bizlayer = L.geoJson().addTo(map);
