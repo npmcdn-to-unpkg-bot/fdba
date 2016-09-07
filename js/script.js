@@ -5,10 +5,8 @@ var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
 var map = L.map('map', {
   scrollWheelZoom: false,
   rotate: true
-  }).setView([40.804406,-73.955380], 17);
+  }).setView([40.802245,-73.956313], 17);
   map.addLayer(layer);
-
-
 
 
   ////////////populate map with markers from sample data
@@ -59,6 +57,9 @@ function style(feature) {
 function mouseoverFunction(e) {
     var layer = e.target;
 
+    // layer.bindPopup(layer.feature.properties.Organization,{offset:new L.Point(0,0)})
+    //         .openPopup();
+
     layer.setStyle({
         weight: 1,
         color: '#fff',
@@ -70,7 +71,7 @@ function mouseoverFunction(e) {
         layer.bringToFront();
     }
 
-    console.log(layer.feature.properties.OBJECTID);
+    // console.log(layer.feature.properties.OBJECTID);
     $('#infoWindow').html(layer.feature.properties.Organization);
   }
 
@@ -83,35 +84,20 @@ function onEachFeature(feature, layer) {
     var popup = "<h5>" + feature.properties.Organization + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br>" + feature.properties.Web;
     layer.bindPopup(popup);
 
+
     layer.on({
         mouseover: mouseoverFunction,
         mouseout: resetHighlight
     });
 }
 
-// $('#myDropdown1').on('hide.bs.dropdown', function () {
-//     return false;
-// });
-
-$('.dropdown.keep-open').on({
-    "shown.bs.dropdown": function() { this.closable = true; },
-    "click":             function() { this.closable = true; },
-    "hide.bs.dropdown":  function() { return this.closable; }
-});
 
 
-var bizmarker = {
-  radius: 8,
-  fillColor: "#bbb",
-  color: "#000",
-  weight: 1,
-  opacity: 1,
-  fillOpacity: 0.8
-};
+
 
   var panOptions = {
     animate: true,
-    duration: 2
+    duration: 1.5
   }
 
   var pan1 = [40.807540,-73.953073];
@@ -147,6 +133,15 @@ var bizmarker = {
       }
     });
 
+
+  var bizmarker = {
+    radius: 8,
+    fillColor: "#bbb",
+    color: "#000",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+  };
 
   $.getJSON('data/biz.geojson', function(Biz) {
     geojson = L.geoJson(Biz, {
