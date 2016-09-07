@@ -3,6 +3,25 @@
     font-size: 13px;
   }
 
+  #bootstrap-overrides .dropdown .dropdown-menu {
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    display: block;
+
+}
+
+#bootstrap-overrides .dropdown.open .dropdown-menu {
+    max-height: 200px;
+    opacity: 1;
+}
+
+
   textarea:hover, 
   input:hover, 
   textarea:active, 
@@ -55,45 +74,6 @@
     border: solid 1px #ccc;
   }
 
-/*  #bootstrap-overrides .btn-group .open .dropdown-menu {
-    z-index: 100;
-    position; relative;
-    display: none;
-
-  }*/
-/*
-  .dropdown-menu>li>a {
-    display: none;
-    position; relative;
-  }
-*//*
-
-
-  #bootstrap-overrides ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-family: Lato;
-    text-align: center;
-  }
-
-  #bootstrap-overrides #nav > li {
-    float: left;
-  }
-
-  #bootstrap-overrides #nav > li:hover .sub {
-    display: block;
-    background-color: white;
-  }
-
-  #bootstrap-overrides .sub {
-    display: none;
-  }
-
-  #bootstrap-overrides .clear {
-    clear: both;
-  }
-*/
 
   #bootstrap-overrides .leaflet-control-zoom {
     z-index: 200;
@@ -106,12 +86,12 @@
     padding: 10px;
     border-radius: 10px;
     font-size: 12px;
-    top:30px;
-    position: relative;
+    
+    position: absolute;
     font-family: Lato;
     width: auto;
-    display: inline;
-    margin-left: -280px;
+    display: block;
+   
     font-weight: 400;
     z-index: 300;
   }
@@ -184,11 +164,9 @@
 
 #bootstrap-overrides .btn {
   width: 280px;
-/*  height: 40px;*/
   float: left;
-  border-radius: 1px;
+  border-radius: 2px;
   padding: 10px;
-
 }
 
 .btn-group {
@@ -199,8 +177,6 @@
 
 
 
-
-
 #bootstrap-overrides .dropdown-menu {
   padding-left:10px;
   padding-right:10px;
@@ -208,10 +184,12 @@
   position:relative;
   list-style-type:none;
   width: 280px;
-  
   font-family: Raleway;
-  
+
 }
+
+
+
 
 #bootstrap-overrides .dropdown-menu .divider {
   margin: 0px;
@@ -226,27 +204,6 @@
 
 
 
-.m-pub {
-  display: inline-block;
-  margin: 3px 40px 0;
-  font-size: 13px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  color: white;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -ms-transition: none;
-  -o-transition: none;
-  transition: none;
-   position: relative;
-}
-
-.m-pub:after,
- .m-pub:focus{
-  color: #ffffff;
-  background-color: #337ab7;
-}
 
   #bootstrap-overrides .dropdown-menu li .m-pub:hover:after {
 
@@ -262,3 +219,53 @@
   transform: rotate(-90deg);
   background: none;
 }
+
+
+
+
+
+#bootstrap-overrides .btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+#bootstrap-overrides .btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+
+#bootstrap-overrides.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+
+#bootstrap-overrides .btn-primary.outline {
+  border: 2px solid #0099cc;
+  color: #0099cc;
+  background-color: #fff;
+}
+
+#bootstrap-overrides .btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+  color: #33a6cc;
+  border-color: #33a6cc;
+}
+#bootstrap-overrides .btn-primary.outline:active, .btn-primary.outline.active {
+  border-color: #007299;
+  color: #007299;
+  box-shadow: none;
+}
+
+
