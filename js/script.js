@@ -5,7 +5,7 @@ var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
 var map = L.map('map', {
   scrollWheelZoom: false,
   rotate: true
-  }).setView([40.802400,-73.957016], 18);
+  }).setView([40.802676,-73.956914], 18);
   map.addLayer(layer);
 
 
@@ -52,8 +52,13 @@ function mouseoverFunction(e) {
     }
 
     // console.log(layer.feature.properties.OBJECTID);
-    $('#infoWindow').html(layer.feature.properties.Organization);
+   $('#infoWindow').html(layer.feature.properties.Organization);
   }
+// infow.forEach(function(i) {
+//   var inf = L.marker(i.layer.feature.geometry.coordinates).addTo(map);
+//   inf.bindPopup(i.layer.feature.properties.Organization)
+// });
+
 
 function resetHighlight(e) {
     geojson.resetStyle(e.target);
@@ -124,9 +129,7 @@ var bizmarker = {
 };
 
   $.getJSON('data/biz.geojson', function(Biz) {
-    // $.each(Biz, function(key, value) {
-    //   $(#bizdrop).append('<li><a href="#" >'+value.feature.properties.Organization+'</a></li>')
-    // })}
+
 
     geojson = L.geoJson(Biz, {
       style: style,
@@ -138,7 +141,137 @@ var bizmarker = {
   });
 
 
+var parking = L.icon({
+  iconUrl: 'img/p.png',
+  iconSize: [25,25],
+  iconAnchor: [15,5]
+});
 
+var atrain = L.icon({
+  iconUrl: 'img/a.png',
+  iconSize: [25,25],
+  iconAnchor: [15,5]
+});
+
+var ctrain = L.icon({
+  iconUrl: 'img/c.png',
+  iconSize: [25,25],
+  iconAnchor: [15,5]
+});
+
+var btrain = L.icon({
+  iconUrl: 'img/b.png',
+  iconSize: [25,25],
+  iconAnchor: [15,5]
+});
+
+var dtrain = L.icon({
+  iconUrl: 'img/d.png',
+  iconSize: [25,25],
+  iconAnchor: [15,5]
+});
+
+var pa = [
+  {
+    name: "122nd St Parking",
+    coord: [40.808421,-73.952140]
+  },
+  {
+    name: "121st St Parking",
+    coord: [40.807999,-73.953170]
+  },
+  {
+    name: "118th E St Parking",
+    coord: [40.805400,-73.953942]
+  },
+  {
+    name: "118th W St Parking",
+    coord: [40.806026,-73.955433]
+  },
+  {
+    name: "115th St Parking",
+    coord: [40.804077,-73.956206]
+  },
+]
+
+
+pa.forEach(function(p) {
+  var mar = L.marker(p.coord, {icon: parking}).addTo(map);
+  mar.bindPopup(p.name)
+});
+
+var at = [
+  {
+    name: "125th Street A Train",
+    coord: [40.810851,-73.952783]
+  },
+]
+
+var bt = [
+  {
+    name: "125th Street B Train",
+    coord: [40.810754,-73.952558]
+  },
+  {
+    name: "116th Street B Train",
+    coord: [40.803758,-73.955900]
+  },
+  {
+    name: "110th Street B Train",
+    coord: [40.800639,-73.958207]
+  },
+]
+
+var ct = [
+  {
+    name: "125th Street C Train",
+    coord: [40.810799,-73.952671]
+  },
+  {
+    name: "116th Street C Train",
+    coord: [40.803721,-73.955782]
+  },
+  {
+    name: "110th Street C Train",
+    coord: [40.800607,-73.958067]
+  },
+]
+
+var dt = [
+  {
+    name: "125th Street D Train",
+    coord: [40.810705,-73.952440]
+  },
+]
+
+at.forEach(function(a) {
+  var mar2 = L.marker(a.coord, {icon: atrain}).addTo(map);
+  mar2.bindPopup(a.name)
+});
+
+bt.forEach(function(b) {
+  var mar3 = L.marker(b.coord, {icon: btrain}).addTo(map);
+  mar3.bindPopup(b.name)
+});
+
+ct.forEach(function(c) {
+  var mar4 = L.marker(c.coord, {icon: ctrain}).addTo(map);
+  mar4.bindPopup(c.name)
+});
+
+dt.forEach(function(d) {
+  var mar5 = L.marker(d.coord, {icon: dtrain}).addTo(map);
+  mar5.bindPopup(d.name)
+});
+
+
+// var $menu = $(".dropdown-menu")
+//   $.each(Biz.menu, function () {
+//     $menu.append(
+//       getItem(this));
+//   }) ;
+//   $menu.menu();
+// });
   
 
   // var bizlayer = L.geoJson().addTo(map);
@@ -150,3 +283,40 @@ var bizmarker = {
 
   // });
 
+
+    // $.each(Biz, function(key, value) {
+    //   $(#bizdrop).append('<li><a href="#" >'+value.feature.properties.Organization+'</a></li>')
+    // })}
+
+// $(document).ready(function(){
+//   for( index in Biz )
+//     {
+//       $('#rest ul').append('<li><a href="#" data-maker="'+Biz[index].feature.properties.Organization +'</a></li>');
+   
+//     }
+  // for( index in json.Sedan )
+  //   {
+  //     $('#sedan ul').append('<li><a href="#" data-maker="'+json.Sedan[index].maker+'" data-price="'+json.Sedan[index].price+'">'+json.Sedan[index].name+'</a></li>');
+
+  //   }
+  // for( index in json.SUV )
+  //   {
+  //     $('#suv ul').append('<li><a href="#" data-maker="'+json.SUV[index].maker+'" data-price="'+json.SUV[index].price+'">'+json.SUV[index].name+'</a></li>');
+
+  //   }
+
+
+
+
+$(document).ready(function(){
+  var listIt = "";
+    for (var i = 0; i < bizdata.features.length; i++){
+      listIt += "<li><a href='#''>" +  bizdata.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + bizdata.features[i].properties.Address + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
+    }
+    $(".dropdown-menu").html(listIt);
+
+    $(".dropdown-menu li a").click(function(){
+  // var selText = $(this).text();
+  // $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+});
+});
