@@ -68,7 +68,7 @@ function resetHighlight(e) {
 
 
 function onEachFeature(feature, layer) {
-    var popup = "<h5>" + feature.properties.Organization + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br>" + feature.properties.Web;
+    var popup = "<h5>" + feature.properties.Organization + '<br>' + '<h6>' + feature.properties.Category + '</h6>' + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br>" + feature.properties.Web;
     layer.bindPopup(popup);
 
 
@@ -90,35 +90,32 @@ var pan2 = [40.805461,-73.954661];
 var pan3 = [40.802895,-73.956206];
 var pan4 = [40.800913,-73.957794];
 
-  $(".myButton").click(function() {
-    if($(this).attr('id') == 'one' ) {
+  // $(".myButton").click(function() {
+  //   if($(this).attr('id') == 'one' ) {
        
-      map.panTo(pan1, panOptions);
-    } 
+  //     map.panTo(pan1, panOptions);
+  //   } 
       
-    else 
-      if 
+  //   else 
+  //     if 
 
-    ($(this).attr('id') == 'three' ) {
-      map.panTo(pan2, panOptions);
-    } 
+  //   ($(this).attr('id') == 'three' ) {
+  //     map.panTo(pan2, panOptions);
+  //   } 
 
-    else 
-      if 
+  //   else 
+  //     if 
 
-    ($(this).attr('id') == 'two' ) {
-      map.panTo(pan3, panOptions);
-    } 
-
-
-    else {
-
-      map.panTo(pan4, panOptions);
-    }
-  });
+  //   ($(this).attr('id') == 'two' ) {
+  //     map.panTo(pan3, panOptions);
+  //   } 
 
 
+  //   else {
 
+  //     map.panTo(pan4, panOptions);
+  //   }
+  // });
 
 
 var bizmarker = {
@@ -197,10 +194,6 @@ var pa = [
 ]
 
 
-pa.forEach(function(p) {
-  var mar = L.marker(p.coord, {icon: parking}).addTo(map);
-  mar.bindPopup(p.name)
-});
 
 var at = [
   {
@@ -246,6 +239,11 @@ var dt = [
   },
 ]
 
+pa.forEach(function(p) {
+  var mar = L.marker(p.coord, {icon: parking}).addTo(map);
+  mar.bindPopup(p.name)
+});
+
 at.forEach(function(a) {
   var mar2 = L.marker(a.coord, {icon: atrain}).addTo(map);
   mar2.bindPopup(a.name)
@@ -267,47 +265,6 @@ dt.forEach(function(d) {
 });
 
 
-// var $menu = $(".dropdown-menu")
-//   $.each(Biz.menu, function () {
-//     $menu.append(
-//       getItem(this));
-//   }) ;
-//   $menu.menu();
-// });
-  
-
-  // var bizlayer = L.geoJson().addTo(map);
-  // bizlayer.addData(Bizdata);
-
-  // Bizdata.forEach(function(element) {
-  //   var marker = L.marker(layer.feature.properties.coordinates).addTo(map);
-  //   marker.bindPopup(layer.feature.properties.aCateg)
-
-  // });
-
-
-    // $.each(Biz, function(key, value) {
-    //   $(#bizdrop).append('<li><a href="#" >'+value.feature.properties.Organization+'</a></li>')
-    // })}
-
-// $(document).ready(function(){
-//   for( index in Biz )
-//     {
-//       $('#rest ul').append('<li><a href="#" data-maker="'+Biz[index].feature.properties.Organization +'</a></li>');
-   
-//     }
-  // for( index in json.Sedan )
-  //   {
-  //     $('#sedan ul').append('<li><a href="#" data-maker="'+json.Sedan[index].maker+'" data-price="'+json.Sedan[index].price+'">'+json.Sedan[index].name+'</a></li>');
-
-  //   }
-  // for( index in json.SUV )
-  //   {
-  //     $('#suv ul').append('<li><a href="#" data-maker="'+json.SUV[index].maker+'" data-price="'+json.SUV[index].price+'">'+json.SUV[index].name+'</a></li>');
-
-  //   }
-
-
 
 
 $(document).ready(function(){
@@ -317,7 +274,13 @@ $(document).ready(function(){
     }
     $("#resta").html(listIt);
 
-    $(".dropdown-menu li a").click(function(){
+    $("#resta li").click(function(a){
+
+          map.bindPopup(popup);
+
+          // var popup2 = "<h5>" + feature.properties.Organization + '<br>' + '<h6>' + feature.properties.Category + '</h6>' + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br>" + feature.properties.Web;
+          // a.bindPopup(popup2);
+
   // var selText = $(this).text();
   // $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
 });

@@ -7,8 +7,12 @@
     font-size: 13px;
     margin-top: 0px;
     margin-bottom: 5px;
-    font-family: Abel;
-    color: #A6ACAF;
+    font-family: Roboto;
+    color: #969DA1;
+  }
+
+  #bootstrap-overrides h5 {
+    margin-bottom: 5px;
   }
 
   #bootstrap-overrides .dropdown .dropdown-menu {
