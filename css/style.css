@@ -3,6 +3,14 @@
     font-size: 13px;
   }
 
+  #bootstrap-overrides h6 {
+    font-size: 13px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-family: Abel;
+    color: #A6ACAF;
+  }
+
   #bootstrap-overrides .dropdown .dropdown-menu {
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
@@ -19,6 +27,7 @@
 #bootstrap-overrides .dropdown.open .dropdown-menu {
     max-height: 200px;
     opacity: 1;
+    overflow:scroll;
 }
 
 
@@ -186,7 +195,7 @@
   list-style-type:none;
   width: 65%;
   font-family: Raleway;
-
+  overflow:scroll;
 }
 
 
