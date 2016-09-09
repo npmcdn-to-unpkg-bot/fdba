@@ -13,13 +13,15 @@ var geojson;
 
 
 function getColor(d) {
-    return d > 6  ? '#5C935C' :
-           d > 5  ? '#BDBDBD' :
-           d > 4  ? '#4A7CA8' :
-           d > 3  ? '#8AB0AB' :
-           d > 2  ? '#C8C6AF' :
-           d > 1  ? '#D8A692' :
-           d > 0  ? '#DE8883' :
+    return d > 8  ? '#BEC2C3' : //9 vacant
+           d > 7  ? '#C8C6AF' : //8 community facility
+           d > 6  ? '#74A974' : //7 parks
+           d > 5  ? '#FFEDA0' : //6 residential
+           d > 4  ? '#4A7CA8' : //5 beauty & health
+           d > 3  ? '#8AB0AB' : //4 retail
+           d > 2  ? '#C8C6AF' : //3 services
+           d > 1  ? '#D8A692' : //2 other food
+           d > 0  ? '#DE8883' : //1 restaurants
                      '#FFEDA0';
   }
 
@@ -310,13 +312,58 @@ dt.forEach(function(d) {
 
 $(document).ready(function(){
   var listIt = "";
-    for (var i = 0; i < bizdata.features.length; i++){
-      listIt += "<li><a href='#''>" +  bizdata.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + bizdata.features[i].properties.Address + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
+    for (var i = 0; i < resta.features.length; i++){
+      listIt += "<li><a href='#''>" +  resta.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + resta.features[i].properties.Address + "&nbsp;" + "| " + resta.features[i].properties.Category + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
     }
-    $(".dropdown-menu").html(listIt);
+    $("#resta").html(listIt);
 
     $(".dropdown-menu li a").click(function(){
   // var selText = $(this).text();
   // $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+});
+});
+
+
+$(document).ready(function(){
+  var listIt = "";
+    for (var i = 0; i < otherf.features.length; i++){
+      listIt += "<li><a href='#''>" +  otherf.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + otherf.features[i].properties.Address + "&nbsp;" + "| " + otherf.features[i].properties.Category + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
+    }
+    $("#otherf").html(listIt);
+
+    $(".dropdown-menu li a").click(function(){
+});
+});
+
+$(document).ready(function(){
+  var listIt = "";
+    for (var i = 0; i < services.features.length; i++){
+      listIt += "<li><a href='#''>" +  services.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + services.features[i].properties.Address + "&nbsp;" + "| " + services.features[i].properties.Category + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
+    }
+    $("#services").html(listIt);
+
+    $(".dropdown-menu li a").click(function(){
+});
+});
+
+$(document).ready(function(){
+  var listIt = "";
+    for (var i = 0; i < retail.features.length; i++){
+      listIt += "<li><a href='#''>" +  retail.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + retail.features[i].properties.Address + "&nbsp;" + "| " + retail.features[i].properties.Category + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
+    }
+    $("#retail").html(listIt);
+
+    $(".dropdown-menu li a").click(function(){
+});
+});
+
+$(document).ready(function(){
+  var listIt = "";
+    for (var i = 0; i < beauhea.features.length; i++){
+      listIt += "<li><a href='#''>" +  beauhea.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + beauhea.features[i].properties.Address + "&nbsp;" + "| " + beauhea.features[i].properties.Category + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
+    }
+    $("#beauhea").html(listIt);
+
+    $(".dropdown-menu li a").click(function(){
 });
 });
