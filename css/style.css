@@ -25,7 +25,7 @@
 }
 
 #bootstrap-overrides .dropdown.open .dropdown-menu {
-    max-height: 200px;
+    max-height: 300px;
     opacity: 1;
     overflow:scroll;
 }
@@ -232,7 +232,7 @@
 
 
 
-/*yellow*/
+/*restaurants / bars*/
 #bootstrap-overrides .btn-danger {
   color: #fff;
   background-color: #DE8883;
@@ -249,9 +249,25 @@
   border-color: #AF3E4B;
 }
 
+/*otherfood*/
+#bootstrap-overrides .btn-primary {
+  color: #fff;
+  background-color: #D8A692;
+  border-color: #BC8772;
+}
+
+#bootstrap-overrides .btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #BC8772;
+  border-color: #A36F5B;
+}
 
 
-/*green*/
+/*services*/
 #bootstrap-overrides .btn-warning {
   color: #fff;
   background-color: #C8C6AF;
@@ -269,7 +285,7 @@
 }
 
 
-/*blue*/
+/*retail*/
 #bootstrap-overrides .btn-success {
   color: #fff;
   background-color: #8AB0AB;
@@ -287,7 +303,7 @@
 }
 
 
-/*darkblue*/
+/*mixed*/
 #bootstrap-overrides .btn-info {
   color: #fff;
   background-color: #4A7CA8;
@@ -304,25 +320,6 @@
   border-color: #205687;
 }
 
-
-
-/*purple*/
-
-#bootstrap-overrides .btn-primary {
-  color: #fff;
-  background-color: #D8A692;
-  border-color: #BC8772;
-}
-
-#bootstrap-overrides .btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.open .dropdown-toggle.btn-primary {
-  color: #fff;
-  background-color: #BC8772;
-  border-color: #A36F5B;
-}
 
 
 
