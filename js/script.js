@@ -4,7 +4,9 @@ var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
 
 var map = L.map('map', {
   scrollWheelZoom: false,
-  rotate: true
+  rotate: true,
+  animate: true, 
+  duration: 1
   }).setView([40.802676,-73.956914], 18);
   map.addLayer(layer);
 
@@ -142,31 +144,31 @@ var bizmarker = {
 
 var parking = L.icon({
   iconUrl: 'img/p.png',
-  iconSize: [25,25],
+  iconSize: [23,23],
   iconAnchor: [15,5]
 });
 
 var atrain = L.icon({
   iconUrl: 'img/a.png',
-  iconSize: [25,25],
+  iconSize: [23,23],
   iconAnchor: [15,5]
 });
 
 var ctrain = L.icon({
   iconUrl: 'img/c.png',
-  iconSize: [25,25],
+  iconSize: [23,23],
   iconAnchor: [15,5]
 });
 
 var btrain = L.icon({
   iconUrl: 'img/b.png',
-  iconSize: [25,25],
+  iconSize: [23,23],
   iconAnchor: [15,5]
 });
 
 var dtrain = L.icon({
   iconUrl: 'img/d.png',
-  iconSize: [25,25],
+  iconSize: [23,23],
   iconAnchor: [15,5]
 });
 
@@ -276,7 +278,8 @@ $(document).ready(function(){
 
     $("#resta li").click(function(a){
 
-          map.bindPopup(popup);
+          map.
+          bindPopup(popup);
 
           // var popup2 = "<h5>" + feature.properties.Organization + '<br>' + '<h6>' + feature.properties.Category + '</h6>' + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br>" + feature.properties.Web;
           // a.bindPopup(popup2);
