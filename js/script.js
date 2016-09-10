@@ -71,8 +71,9 @@ function onEachFeature(feature, layer) {
     var popup = "<h5>" + feature.properties.Organization + '<br>' + '<h6>' + feature.properties.Category + '</h6>' + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br><a href=" + feature.properties.Web + ">" + feature.properties.Web + "</a>";
     layer.bindPopup(popup);
 
-    var id = feature.properties.OBJECTID;
+    var id = layer.feature.properties.OBJECTID;
 
+    console.log(id);
     // layer.bindLabel(feature.properties.Organization, {noHide:true});
 
 
@@ -131,27 +132,18 @@ var bizmarker = {
   opacity: 1,
   fillOpacity: 0.8
 };
-
-
-function openMarkerPopup(id){
-    geojson.eachLayer(function(feature){
-        if(feature.feature.properties.id==id){
-            feature.openPopup();
-        }
-    
-    });
-}   
+  
 
 
   // $.getJSON('data/biz.geojson', function(Biz) {
 
 
-    geojson = L.geoJson(resta, {
+    geojson1 = L.geoJson(resta, {
       style: style,
       onEachFeature: onEachFeature,
       pointTolayer: function (feature, latlng) {
         return L.circleMarker(latlng, bizmarker);
-        markers.push(id);
+     
       }
     }).addTo(map);
  
@@ -324,50 +316,68 @@ dt.forEach(function(d) {
 });
 
 
-function markerFunction(id) {
-  for (var i in markers){
-    var markerID = markers[i].options.id ;
+function openMarker(id) {
+  for (var i in geojson){
+    var markerID = geojson[i].feature.properties.OBJECTID;
+    // console.log(geojson[i].feature.properties.OBJECTID);
     if (markerID == id){
-      markers[i].openPopup();
+      geojson[i].openPopup();
     };
   }
 }
 
+function openMarker2(id){
+    geojson.eachLayer(function(feature){
+        if(feature.feature.properties.OBJECTID==id){
+            feature.openPopup();
+        }
+    
+    });
+} 
 
-$(document).ready(function(){
+// geojson2 = L.geoJson(resta, {
+//           style: style,
+//           onEachFeature: function (feature, layer) {
+//             layer.bindPopup(feature.properties.OBJECTID);
+//           },
+//           pointTolayer: function (feature, latlng) {
+//         return L.circleMarker(latlng, bizmarker);
+     
+//       }
+//         });
+
+//       geojson2.addTo(map);
+
+// $(document).ready(function(){
   var listIt = "";
   // var po ="";
     for (var i = 0; i < resta.features.length; i++){
-      listIt += "<li><a id=\"resta.features[i].properties.OBJECTID\">" +  resta.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + resta.features[i].properties.Address + "&nbsp;" + "| " + resta.features[i].properties.Category + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
+      listIt += "<li><a id='" + resta.features[i].properties.OBJECTID+ "'>" +  resta.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + resta.features[i].properties.Address + "&nbsp;" + "| " + resta.features[i].properties.Category + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
       // po += resta.features[i].geometry.coordinates;
     }
     $("#resta").html(listIt);
 
-    $(".dropdown-menu li a").click(function(){
-       markerFunction($(this)[0].id);
 
+    $("#resta").html(listIt);
 
-//     geojson.bindPopup(layer.feature.properties.Organization);
-// geojson.openPopup(latlng);
+    $("#resta li a").click(function(e){ 
+      e.stopPropagation();
+      
+      var id = $(this)[0].id;
+      console.log(id);
 
+      geojson1.eachLayer(function(feature){
 
-
+        if(feature.feature.properties.OBJECTID==id) {
+        feature.openPopup();
+      }
+      });
   
-          // console.log(resta.features[i].geometry.coordinates);
-          
-          // var restacoord = [resta.features.geometry.coordinates];
-          // map.panTo(po, panOptions);
-        
-          // layer.openPopup();
-          // a.bindPopup(popup).openPopup();
-
-          // var popup2 = "<h5>" + feature.properties.Organization + '<br>' + '<h6>' + feature.properties.Category + '</h6>' + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br>" + feature.properties.Web;
-          // a.bindPopup(popup2);
 
 
   // var selText = $(this).text();
   // $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
-});
+// });
 });
 
 
