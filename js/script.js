@@ -13,6 +13,7 @@ var map = L.map('map', {
 
 var geojson;
 
+var markers = [];
 
 function getColor(d) {
     return d > 8  ? '#BEC2C3' : //9 vacant
@@ -58,10 +59,7 @@ function mouseoverFunction(e) {
     // console.log(layer.feature.properties.OBJECTID);
    $('#infoWindow').html(layer.feature.properties.Organization);
   }
-// infow.forEach(function(i) {
-//   var inf = L.marker(i.layer.feature.geometry.coordinates).addTo(map);
-//   inf.bindPopup(i.layer.feature.properties.Organization)
-// });
+
 
 
 function resetHighlight(e) {
@@ -70,8 +68,12 @@ function resetHighlight(e) {
 
 
 function onEachFeature(feature, layer) {
-    var popup = "<h5>" + feature.properties.Organization + '<br>' + '<h6>' + feature.properties.Category + '</h6>' + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br>" + feature.properties.Web;
+    var popup = "<h5>" + feature.properties.Organization + '<br>' + '<h6>' + feature.properties.Category + '</h6>' + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br><a href=" + feature.properties.Web + ">" + feature.properties.Web + "</a>";
     layer.bindPopup(popup);
+
+    var id = feature.properties.OBJECTID;
+
+    // layer.bindLabel(feature.properties.Organization, {noHide:true});
 
 
     layer.on({
@@ -82,15 +84,15 @@ function onEachFeature(feature, layer) {
 
 
 
-var panOptions = {
-  animate: true,
-  duration: 1.5
-}
+// var panOptions = {
+//   animate: true,
+//   duration: 1.5
+// }
 
-var pan1 = [40.807540,-73.953073];
-var pan2 = [40.805461,-73.954661];
-var pan3 = [40.802895,-73.956206];
-var pan4 = [40.800913,-73.957794];
+// var pan1 = [40.807540,-73.953073];
+// var pan2 = [40.805461,-73.954661];
+// var pan3 = [40.802895,-73.956206];
+// var pan4 = [40.800913,-73.957794];
 
   // $(".myButton").click(function() {
   //   if($(this).attr('id') == 'one' ) {
@@ -120,6 +122,7 @@ var pan4 = [40.800913,-73.957794];
   // });
 
 
+
 var bizmarker = {
   radius: 8,
   fillColor: "#bbb",
@@ -129,17 +132,71 @@ var bizmarker = {
   fillOpacity: 0.8
 };
 
-  $.getJSON('data/biz.geojson', function(Biz) {
+
+function openMarkerPopup(id){
+    geojson.eachLayer(function(feature){
+        if(feature.feature.properties.id==id){
+            feature.openPopup();
+        }
+    
+    });
+}   
 
 
-    geojson = L.geoJson(Biz, {
+  // $.getJSON('data/biz.geojson', function(Biz) {
+
+
+    geojson = L.geoJson(resta, {
+      style: style,
+      onEachFeature: onEachFeature,
+      pointTolayer: function (feature, latlng) {
+        return L.circleMarker(latlng, bizmarker);
+        markers.push(id);
+      }
+    }).addTo(map);
+ 
+     geojson = L.geoJson(otherf, {
       style: style,
       onEachFeature: onEachFeature,
       pointTolayer: function (feature, latlng) {
         return L.circleMarker(latlng, bizmarker);
       }
     }).addTo(map);
-  });
+
+      geojson = L.geoJson(services, {
+      style: style,
+      onEachFeature: onEachFeature,
+      pointTolayer: function (feature, latlng) {
+        return L.circleMarker(latlng, bizmarker);
+      }
+    }).addTo(map);
+ 
+     geojson = L.geoJson(retail, {
+      style: style,
+      onEachFeature: onEachFeature,
+      pointTolayer: function (feature, latlng) {
+        return L.circleMarker(latlng, bizmarker);
+      }
+    }).addTo(map);
+
+     geojson = L.geoJson(beauhea, {
+      style: style,
+      onEachFeature: onEachFeature,
+      pointTolayer: function (feature, latlng) {
+        return L.circleMarker(latlng, bizmarker);
+      }
+    }).addTo(map);
+
+      geojson = L.geoJson(others, {
+      style: style,
+      onEachFeature: onEachFeature,
+      pointTolayer: function (feature, latlng) {
+        return L.circleMarker(latlng, bizmarker);
+      }
+    }).addTo(map);
+ 
+
+
 
 
 var parking = L.icon({
@@ -267,22 +324,46 @@ dt.forEach(function(d) {
 });
 
 
+function markerFunction(id) {
+  for (var i in markers){
+    var markerID = markers[i].options.id ;
+    if (markerID == id){
+      markers[i].openPopup();
+    };
+  }
+}
 
 
 $(document).ready(function(){
   var listIt = "";
+  // var po ="";
     for (var i = 0; i < resta.features.length; i++){
-      listIt += "<li><a href='#''>" +  resta.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + resta.features[i].properties.Address + "&nbsp;" + "| " + resta.features[i].properties.Category + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
+      listIt += "<li><a id=\"resta.features[i].properties.OBJECTID\">" +  resta.features[i].properties.Organization + "&nbsp;" + "<br>" + "<h6>" + resta.features[i].properties.Address + "&nbsp;" + "| " + resta.features[i].properties.Category + "</h6>" + "</a></li>" + "<li role=" + "separator" + " class=" + "divider" +"></li>";
+      // po += resta.features[i].geometry.coordinates;
     }
     $("#resta").html(listIt);
 
-    $("#resta li").click(function(a){
+    $(".dropdown-menu li a").click(function(){
+       markerFunction($(this)[0].id);
 
-          map.
-          bindPopup(popup);
+
+//     geojson.bindPopup(layer.feature.properties.Organization);
+// geojson.openPopup(latlng);
+
+
+
+  
+          // console.log(resta.features[i].geometry.coordinates);
+          
+          // var restacoord = [resta.features.geometry.coordinates];
+          // map.panTo(po, panOptions);
+        
+          // layer.openPopup();
+          // a.bindPopup(popup).openPopup();
 
           // var popup2 = "<h5>" + feature.properties.Organization + '<br>' + '<h6>' + feature.properties.Category + '</h6>' + "</h5>"  + feature.properties.Address + "<br>" + feature.properties.Phone + "<br>" + feature.properties.Web;
           // a.bindPopup(popup2);
+
 
   // var selText = $(this).text();
   // $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
@@ -298,6 +379,7 @@ $(document).ready(function(){
     $("#otherf").html(listIt);
 
     $(".dropdown-menu li a").click(function(){
+
 });
 });
 
